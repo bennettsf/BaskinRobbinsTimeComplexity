@@ -13,17 +13,13 @@ public class BaskinRobbins {
         if (num == 0 || num == 1){
             return 1;
         }
-        // if there's no key for the current num, place one in the map containing the current recursive call
-        if (!map.containsKey(num)) {
-            map.put(num, findCombinations(num - 1) + findCombinations(num - 2));
-        }
-        // return the current recursive call from the map
-        return map.get(num);
+
+        return findCombinations(num - 1) + findCombinations(num - 2);
 
     }
 
     public static void main(String[] args) {
-        String filePath = "data.csv";
+        String filePath = "data_no_memoization.csv";
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true));
